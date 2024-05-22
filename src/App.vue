@@ -32,8 +32,8 @@
       </form>
     </section>
     <section class="">
+      <p class="text-danger text-center" v-if="listaPacientes.length < 1">Aún no hay consultas registradas</p>
       <div class="row row-cols-lg-6 g-2 justify-content-evenly">
-
         <CardPaciente v-for="(paciente, index) in listaPacientes" :key="index" :style="colorFondo(paciente.gravedad)"
           :nombre="paciente.nombre" :fecha="paciente.fecha" :hora="paciente.hora" :motivo="paciente.motivo"
           @eliminarPaciente="listaPacientes.splice(index, 1)" />
@@ -57,16 +57,7 @@ export default {
     return {
       tiposGravedad: ['Baja', 'Media', 'Alta'],
       datosPaciente: { nombre: '', fecha: '', hora: '', gravedad: '', motivo: '' },
-      listaPacientes: [
-        { nombre: 'pedrito', fecha: '12-12-2024', hora: '13:15', gravedad: 'Baja', motivo: 'Dolor pie' },
-        { nombre: 'pedrito', fecha: '22-05-2024', hora: '12:15', gravedad: 'Media', motivo: 'dolor guatita' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' },
-        { nombre: 'pedrito', fecha: '23-05-2024', hora: '12:45', gravedad: 'Alta', motivo: 'Dolor Mano' }
-      ]
+      listaPacientes: []
     }
   },
   methods: {
